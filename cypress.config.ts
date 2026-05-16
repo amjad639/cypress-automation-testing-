@@ -5,10 +5,8 @@ import createEsbuildPlugin from "@badeball/cypress-cucumber-preprocessor/esbuild
 
 export default defineConfig({
   e2e: {
-    specPattern: [
-      "cypress/e2e/**/*.feature",
-      "cypress/e2e/**/*.cy.js"
-    ],
+    specPattern: ["cypress/e2e/**/*.feature", "cypress/e2e/**/*.cy.js"],
+    chromeWebSecurity: false,
     async setupNodeEvents(
       on: Cypress.PluginEvents,
       config: Cypress.PluginConfigOptions
@@ -23,4 +21,7 @@ export default defineConfig({
       return config;
     },
   },
+  env: {
+    stepDefinitions: "cypress/support/step-definitions/**/*.{js,ts}"
+  }
 });
