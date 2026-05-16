@@ -1,0 +1,27 @@
+{
+  "name": "amjad",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "amjad",
+  "type": "module",
+  "main": "cypress.config.ts",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
+    "chai": "^6.2.2",
+    "cypress-upload-file": "^1.0.6",
+    "mocha": "^11.7.5"
+  },
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^24.0.1",
+    "cypress": "^15.14.2",
+    "ts-loader": "^9.5.7"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/support/step-definitions/**/*.{ts,js}"
+  }
+}
