@@ -1,4 +1,4 @@
-import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
+import { When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import homePage from '../POM/home-POM';
 import productPage from '../POM/ProductPage-POM';
 import checkOut from '../POM/CheckOut-POM';
@@ -12,9 +12,6 @@ const checkout = new checkOut();
 const cart = new CartPOM();
 const log = new loginPOM();
 const payment = new Payment();
-
-// ==================== Given ====================
-
 
 // ==================== When ====================
 
@@ -38,53 +35,49 @@ When('I go to checkout', () => {
 });
 
 When('I proceed to login step', () => {
-  payment.clickProceedToLogin();
+  payment.clickProceedToLogin();   
 });
 
-When('I login with email {string} and password {string}', (email, password) => {
+When('I enter checkout login email {string} and password {string}', (email, password) => {
   log.enterEmail(email);
   log.enterPassword(password);
   cy.get('[data-test="login-submit"]').click();
 });
 
 When('I proceed to billing', () => {
-  payment.clickProceedToBilling();
+  payment.clickProceedToBilling();  
 });
 
 When('I enter house number {string}', (number) => {
-  payment.enterHouseNumber(number);
+  payment.enterHouseNumber(number); 
 });
 
 When('I proceed to payment', () => {
-  payment.clickProceedToPayment();
+  payment.clickProceedToPayment();  
 });
 
 When('I select payment method {string}', (method) => {
-  payment.selectPaymentMethod(method);
+  payment.selectPaymentMethod(method); 
 });
 
 When('I click finish', () => {
-  payment.clickFinish();
+  payment.clickFinish();            
 });
 
 When('I remove the product from the cart', () => {
-  cart.removeProduct();
+  cart.removeProduct();             
 });
 
 When('I enter quantity {string}', (quantity) => {
-  cart.enterQuantity(quantity);
+  cart.enterQuantity(quantity);     
 });
 
 // ==================== Then ====================
 
-Then('I should see {string} in the cart', (productName) => {
-  cart.verifyProductInCart(productName);
-});
-
 Then('the cart should be empty', () => {
-  cart.verifyCartIsEmpty();
+  cart.verifyCartIsEmpty();        
 });
 
 Then('the add to cart button should be disabled', () => {
-  cy.get('#btn-add-to-cart').should('be.disabled');
+  product.verifyOutOfStock();       
 });

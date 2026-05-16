@@ -5,12 +5,11 @@ const log = new loginPOM();
 
 
 
-When('I login with email {string} and password {string}', (email, password) => {
+When('I enter checkout login email {string} and password {string}', (email, password) => {
   log.enterEmail(email);
   log.enterPassword(password);
-  log.clickLogin();
+  cy.get('[data-test="login-submit"]').click();
 });
-
 When('I submit the login form', () => {
   log.clickLogin();
 });

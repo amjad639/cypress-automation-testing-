@@ -33,29 +33,29 @@ describe('registration', () => {
   });
     it('registration with valid data ', () => {
       reg.username('amjad', 'amjad');
-      cy.dob().type('2002-01-01');
+      reg.DOB('2002-01-01');
       reg.locationInfo();
-      cy.phone().type('5551234567');
-      cy.email().type('amjad@gmail.com');
-      cy.password().type('Aya.aya14');
-      cy.clickSubmit();
-      cy.title().should('include', 'Login - Practice Software Testing - Toolshop - v5.0');
-      cy.contains('Login').should('be.visible');
+      reg.phoneNumber('5551234567');
+      reg.email('amjad@gmail.com');
+      reg.password('Aya.aya14');
+      reg.submitRegistration();
+      reg.verifySuccessNavToLogin();
+      reg.verifyInLoginPage();
 
     });
     it('registration with invalid email address ', () => {
-      reg.username();
-      cy.dob().type('2002-01-01');
+      reg.username('amjad', 'amjad');
+      reg.DOB('2002-01-01');
       reg.locationInfo();
-      cy.phone().type('5551234567');
-      cy.email().type('@gmail.amjad.com');
-      cy.password().type('Aya.aya14');
-      cy.clickSubmit();
+      reg.phoneNumber('5551234567');
+      reg.email('@gmail.amjad.com');
+      reg.password('Aya.aya14');
+      reg.submitRegistration();
       cy.contains('Email format is invalid').should('be.visible');
     });
     it('registration with empty fields ', () => {
 
-      cy.clickSubmit();
+      reg.submitRegistration();
       cy.contains('First name is required').should('be.visible');
       cy.contains('Last name is required').should('be.visible');
       cy.contains('Please enter a valid date in YYYY-MM-DD format.').should('be.visible');
@@ -72,57 +72,58 @@ describe('registration', () => {
     });
     it('registration with already registered email address ', () => {
 
-      reg.username();
-      cy.dob().type('2002-01-01');
+      reg.username('amjad', 'amjad');
+      reg.DOB('2002-01-01');
       reg.locationInfo();
-      cy.phone().type('5551234567');
-      cy.email().type('amjad@gmail.com');
-      cy.password().type('Aya.aya14');
-      cy.clickSubmit();
+      reg.phoneNumber('5551234567');
+      reg.email('amjad@gmail.com');
+      reg.password('Aya.aya14');
+      reg.submitRegistration();
       cy.contains('A customer with this email address already exists.').should('be.visible');
     });
     it('registration with invalid date of birth format ', () => {
-      reg.username();
-      cy.dob().type('2212-34-10');
+      reg.username('amjad', 'amjad');
+      reg.DOB('2212-34-10');
       reg.locationInfo();
-      cy.phone().type('5551234567');
-      reg.emailPassword();
-      cy.clickSubmit();
+      reg.phoneNumber('5551234567');
+      reg.email("a@gmail.com");
+      reg.password('Aya.aya14');
+      reg.submitRegistration();
       cy.contains('Please enter a valid date in YYYY-MM-DD format.').should('be.visible');
     });
     it('registration with invalid phone number format ', () => {
 
-      reg.username();
-      cy.dob().type('2002-01-01');
+      reg.username('amjad', 'amjad');
+      reg.DOB('2002-01-01');
       reg.locationInfo();
-      cy.phone().type('***********');
-      reg.emailPassword();
-      cy.clickSubmit();
+      reg.phoneNumber('***********');
+      reg.email('a@gmail.com');
+      reg.password('Aya.aya14');
+      reg.submitRegistration();
       cy.contains('Only numbers are allowed.').should('be.visible');
     });
     it('registration with invalid first name and last name format ', () => {
 
-      cy.firstName().type('*****');
-      cy.lastName().type('*****');
-      cy.dob().type('2002-01-01');
+      reg.username('*****', '*****');
+      reg.DOB('2002-01-01');
       reg.locationInfo();
-      cy.phone().type('5551234567');
-      cy.email().type('a@gmail.com');
-      cy.password().type('Aya.aya14');
-      cy.clickSubmit();
+      reg.phoneNumber('5551234567');
+      reg.email('a@gmail.com');
+      reg.password('Aya.aya14');
+      reg.submitRegistration();
       cy.contains('First name format is invalid').should('be.visible');
       cy.contains('Last name format is invalid').should('be.visible');
 
     });
     it('registration with invalid password format ', () => {
 
-      reg.username();
-      cy.dob().type('2002-01-01');
+      reg.username('amjad', 'amjad');
+      reg.DOB('2002-01-01');
       reg.locationInfo();
-      cy.phone().type('5551234567');
-      cy.email().type('aa@gmail.com');
-      cy.password().type('password');
-      cy.clickSubmit();
+      reg.phoneNumber('5551234567');
+      reg.email('aa@gmail.com');
+      reg.password('password');
+      reg.submitRegistration();
       cy.contains('Password must include invalid characters.').should('be.visible');
     });
 

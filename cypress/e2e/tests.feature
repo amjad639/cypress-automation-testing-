@@ -172,7 +172,7 @@ Feature: Automation test store website
     And I add it to the cart
     And I go to checkout
     And I proceed to login step
-    And I login with email "amjad@gmail.com" and password "Aya.aya14"
+    And I enter checkout login email "amjad@gmail.com" and password "Aya.aya14"
     And I proceed to billing
     And I enter house number "10"
     And I proceed to payment

@@ -1,4 +1,3 @@
-// common.steps.js
 import { Given, Then } from "@badeball/cypress-cucumber-preprocessor";
 import homePage from '../POM/home-POM';
 import loginPOM from '../POM/login-POM';
@@ -43,10 +42,18 @@ Given('I navigate to the home page', () => {
   home.verifyInHomePage();
 });
 
-// ========== Then ==========
+// ========== Then (all shared Then steps live ONLY here) ==========
 
 Then('I should see {string}', (text) => {
   cy.contains(text).should('be.visible');
+});
+
+Then('I should see {string} in the results', (text) => {
+  cy.contains(text).should('be.visible');
+});
+
+Then('I should see {string} in the cart', (productName) => {
+  cy.contains(productName).should('be.visible');
 });
 
 Then('I should be redirected to the login page', () => {

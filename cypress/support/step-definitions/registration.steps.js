@@ -51,7 +51,7 @@ When('I fill in registration data with invalid name {string}', (name) => {
   reg.DOB('2002-01-01');
   reg.locationInfo();
   reg.phoneNumber('5551234567');
-  reg.email('a@gmail.com');
+  reg.email('Q@gmail.com');
   reg.password('Aya.aya14');
 });
 
