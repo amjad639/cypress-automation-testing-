@@ -350,7 +350,7 @@ describe('cart', () => {
     cart.removeProduct('Combination Pliers');
     cart.verifyCartIsEmpty();
   });
-  it.only('check product quantity if they are more than available (should be failed)', () => {
+  it('check product quantity if they are more than available (should be failed)', () => {
     home.visitHomePage();
     home.verifyInHomePage();
     home.openProduct('Combination Pliers');
