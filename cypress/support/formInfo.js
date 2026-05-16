@@ -45,3 +45,6 @@ Cypress.Commands.add('loginSubmit', () => {
 Cypress.Commands.add('houseNumber', () => {
     cy.get('[data-test="house_number"]')
 });
+Cypress.Commands.add('fotgotPasswordButton', () => {
+    cy.get('[data-test="forgot-password-submit"]').click();
+});

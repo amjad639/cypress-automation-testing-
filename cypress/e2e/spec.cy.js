@@ -32,7 +32,7 @@ describe('registration', () => {
     cy.title().should('include', 'Register');
   });
     it('registration with valid data ', () => {
-      reg.username();
+      reg.username('amjad', 'amjad');
       cy.dob().type('2002-01-01');
       reg.locationInfo();
       cy.phone().type('5551234567');
